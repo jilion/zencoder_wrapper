@@ -1,0 +1,236 @@
+test: true
+private: true
+grouping: user-id-<%= user_id %>
+input: <%= path %>
+output:
+
+# =====================
+# = HD (720p) Outputs =
+# =====================
+
+# HD MP4/H.264 High 720p
+# -
+#   # General Settings
+#   label: mp4_high_720
+#   base_url: s3://dev.sublimevideo.videos/<%= token %>
+#   filename: <%= token %>_high_720.mp4
+#   # Format and Codecs
+#   format: mp4
+#   h264_profile: high
+#   # Resolution
+#   height: 720
+#   # Rate Control
+#   quality: 5
+#   audio_quality: 5
+#   speed: 1
+#   # S3
+#   public: 1
+#   # Conditions
+#   skip:
+#     min_size: 1280x720
+
+# HD MP4/H.264 Main 720p
+-
+  # General Settings
+  label: mp4_main_720
+  base_url: s3://dev.sublimevideo.videos/<%= token %>
+  filename: <%= token %>_main_720.mp4
+  # Format and Codecs
+  format: mp4
+  h264_profile: main
+  # Resolution
+  height: 720
+  # Rate Control
+  quality: 3
+  audio_quality: 3
+  speed: 3
+  # S3
+  public: 1
+  # Conditions
+  skip:
+    min_size: 1280x720
+
+# HD WebM/V8 720p
+-
+  # General Settings
+  label: webm_720
+  base_url: s3://dev.sublimevideo.videos/<%= token %>
+  filename: <%= token %>_720.webm
+  # Format and Codecs
+  format: webm
+  # Resolution
+  height: 720
+  # Rate Control
+  quality: 3
+  audio_quality: 3
+  speed: 3
+  # S3
+  public: 1
+  # Conditions
+  skip:
+    min_size: 1280x720
+
+# ===========================
+# = Standard (480p) Outputs =
+# ===========================
+
+# Standard MP4/H.264 High 480p
+# -
+#   # General Settings
+#   label: mp4_high_480
+#   base_url: s3://dev.sublimevideo.videos/<%= token %>
+#   filename: <%= token %>_high_480.mp4
+#   # Format and Codecs
+#   format: mp4
+#   h264_profile: high
+#   # Resolution
+#   height: 480
+#   # Rate Control
+#   quality: 3
+#   audio_quality: 3
+#   speed: 3
+#   # S3
+#   public: 1
+#   # Conditions
+#   skip:
+#     max_size: 1280x719
+#     min_size: 854x480
+
+# Standard MP4/H.264 Main 480p
+-
+  # General Settings
+  label: mp4_main_480
+  base_url: s3://dev.sublimevideo.videos/<%= token %>
+  filename: <%= token %>_main_480.mp4
+  # Format and Codecs
+  format: mp4
+  h264_profile: main
+  # Resolution
+  height: 480
+  # Rate Control
+  quality: 3
+  audio_quality: 3
+  speed: 3
+  # S3
+  public: 1
+  # Conditions
+  skip:
+    max_size: 1280x719
+    min_size: 854x480
+
+# Standard WebM/V8 480p
+-
+  # General Settings
+  label: webm_480
+  base_url: s3://dev.sublimevideo.videos/<%= token %>
+  filename: <%= token %>_480.webm
+  # Format and Codecs
+  format: webm
+  # Resolution
+  height: 480
+  # Rate Control
+  quality: 3
+  audio_quality: 3
+  speed: 3
+  # S3
+  public: 1
+  # Conditions
+  skip:
+    max_size: 1280x719
+    min_size: 854x480
+
+# ================
+# = Base Outputs =
+# ================
+
+# MP4/H.264 Baseline 360p
+-
+  # General Settings
+  label: mp4_baseline_360
+  base_url: s3://dev.sublimevideo.videos/<%= token %>
+  filename: <%= token %>_baseline_360.mp4
+  # Format and Codecs
+  format: mp4
+  h264_profile: baseline
+  # Resolution
+  height: 360
+  # Rate Control
+  quality: 3
+  audio_quality: 3
+  speed: 3
+  # S3
+  public: 1
+  # Conditions
+  skip:
+    min_size: 480x360
+
+# WebM/V8 360p
+-
+  # General Settings
+  label: webm_360
+  base_url: s3://dev.sublimevideo.videos/<%= token %>
+  filename: <%= token %>_360.webm
+  # Format and Codecs
+  format: webm
+  # Resolution
+  height: 360
+  # Rate Control
+  quality: 3
+  audio_quality: 3
+  speed: 3
+  # S3
+  public: 1
+  # Conditions
+  skip:
+    min_size: 480x360
+
+# 3GP/MPEG4 240p
+-
+  # General Settings
+  label: 3gp_240
+  base_url: s3://dev.sublimevideo.videos/<%= token %>
+  filename: <%= token %>_240.3gp
+  # Format and Codecs
+  format: 3gp
+  # Resolution
+  height: 240
+  # Rate Control
+  quality: 3
+  audio_quality: 3
+  speed: 3
+  # S3
+  public: 1
+  # Conditions
+  skip:
+    min_size: 480x360
+
+  # Thumbnails
+  thumbnails:
+  -
+    label: thumbnails_720
+    interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    start_at_first_frame: 1
+    height: 720
+    base_url: s3://dev.sublimevideo.videos/<%= token %>/thumbnails/720
+    public: 1
+  -
+    label: thumbnails_600
+    interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    start_at_first_frame: 1
+    height: 600
+    base_url: s3://dev.sublimevideo.videos/<%= token %>/thumbnails/600
+    public: 1
+  -
+    label: thumbnails_480
+    interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    start_at_first_frame: 1
+    base_url: s3://dev.sublimevideo.videos/<%= token %>/thumbnails/480
+    height: 480
+    public: 1
+  -
+    label: thumbnails_360
+    interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    start_at_first_frame: 1
+    base_url: s3://dev.sublimevideo.videos/<%= token %>/thumbnails/360
+    height: 360
+    public: 1
