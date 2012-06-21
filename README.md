@@ -8,7 +8,7 @@ Simple Zencoder wrapper to test the service.
 
 ## Usage
 
-Just edit the test.rb file:
+Just edit the video params in the `test.rb` file:
 
 ``` ruby
 video = Video.new(
@@ -17,7 +17,11 @@ video = Video.new(
 )
 ```
 
-and run the test file: `ruby test.rb`.
+and run the file: `ruby test.rb`.
+
+Encoded videos and thumbnails will be automatically uploaded in your dev S3 account:
+
+`s3://dev.sublimevideo.videos/<token>/...`
 
 Outputs can be edited in `config/zencoder_job_request.yml`
 
