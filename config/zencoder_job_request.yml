@@ -8,34 +8,14 @@ output:
 # = HD (720p) Outputs =
 # =====================
 
-# HD MP4/H.264 High 720p
-# -
-#   # General Settings
-#   label: mp4_high_720
-#   base_url: s3://dev.sublimevideo.videos/<%= token %>
-#   filename: <%= token %>_high_720.mp4
-#   # Format and Codecs
-#   format: mp4
-#   h264_profile: high
-#   # Resolution
-#   height: 720
-#   # Rate Control
-#   quality: 5
-#   audio_quality: 5
-#   speed: 1
-#   # S3
-#   public: 1
-#   # Conditions
-#   skip:
-#     min_size: 1280x720
-
 # HD MP4/H.264 Main 720p
 -
   # General Settings
-  label: mp4_main_720
+  label: mp4_720
   base_url: s3://dev.sublimevideo.videos/<%= token %>
-  filename: <%= token %>_main_720.mp4
+  filename: <%= token %>_720.mp4
   # Format and Codecs
+  device_profile: mobile/advanced
   format: mp4
   h264_profile: main
   # Resolution
@@ -57,6 +37,7 @@ output:
   base_url: s3://dev.sublimevideo.videos/<%= token %>
   filename: <%= token %>_720.webm
   # Format and Codecs
+  device_profile: mobile/advanced
   format: webm
   # Resolution
   height: 720
@@ -74,35 +55,14 @@ output:
 # = Standard (480p) Outputs =
 # ===========================
 
-# Standard MP4/H.264 High 480p
-# -
-#   # General Settings
-#   label: mp4_high_480
-#   base_url: s3://dev.sublimevideo.videos/<%= token %>
-#   filename: <%= token %>_high_480.mp4
-#   # Format and Codecs
-#   format: mp4
-#   h264_profile: high
-#   # Resolution
-#   height: 480
-#   # Rate Control
-#   quality: 3
-#   audio_quality: 3
-#   speed: 3
-#   # S3
-#   public: 1
-#   # Conditions
-#   skip:
-#     max_size: 1280x719
-#     min_size: 854x480
-
 # Standard MP4/H.264 Main 480p
 -
   # General Settings
   label: mp4_main_480
   base_url: s3://dev.sublimevideo.videos/<%= token %>
-  filename: <%= token %>_main_480.mp4
+  filename: <%= token %>_480.mp4
   # Format and Codecs
+  device_profile: mobile/advanced
   format: mp4
   h264_profile: main
   # Resolution
@@ -125,6 +85,7 @@ output:
   base_url: s3://dev.sublimevideo.videos/<%= token %>
   filename: <%= token %>_480.webm
   # Format and Codecs
+  device_profile: mobile/advanced
   format: webm
   # Resolution
   height: 480
@@ -146,10 +107,11 @@ output:
 # MP4/H.264 Baseline 360p
 -
   # General Settings
-  label: mp4_baseline_360
+  label: mp4_360
   base_url: s3://dev.sublimevideo.videos/<%= token %>
-  filename: <%= token %>_baseline_360.mp4
+  filename: <%= token %>_360.mp4
   # Format and Codecs
+  device_profile: mobile/baseline
   format: mp4
   h264_profile: baseline
   # Resolution
@@ -171,6 +133,7 @@ output:
   base_url: s3://dev.sublimevideo.videos/<%= token %>
   filename: <%= token %>_360.webm
   # Format and Codecs
+  device_profile: mobile/baseline
   format: webm
   # Resolution
   height: 360
@@ -187,15 +150,16 @@ output:
 # 3GP/MPEG4 240p
 -
   # General Settings
-  label: 3gp_240
+  label: 3gp_240_q2
   base_url: s3://dev.sublimevideo.videos/<%= token %>
   filename: <%= token %>_240.3gp
   # Format and Codecs
+  device_profile: mobile/legacy
   format: 3gp
   # Resolution
   height: 240
   # Rate Control
-  quality: 3
+  quality: 2
   audio_quality: 3
   speed: 3
   # S3
@@ -208,29 +172,37 @@ output:
   thumbnails:
   -
     label: thumbnails_720
-    interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    format: jpg
     start_at_first_frame: 1
+    # interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    number: 5 # A number of thumbnails to capture grabeb evenly-spaced across the whole duration.
     height: 720
     base_url: s3://dev.sublimevideo.videos/<%= token %>/thumbnails/720
     public: 1
   -
     label: thumbnails_600
-    interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    format: jpg
     start_at_first_frame: 1
+    # interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    number: 5 # A number of thumbnails to capture grabeb evenly-spaced across the whole duration.
     height: 600
     base_url: s3://dev.sublimevideo.videos/<%= token %>/thumbnails/600
     public: 1
   -
     label: thumbnails_480
-    interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    format: jpg
     start_at_first_frame: 1
+    # interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    number: 5 # A number of thumbnails to capture grabeb evenly-spaced across the whole duration.
     base_url: s3://dev.sublimevideo.videos/<%= token %>/thumbnails/480
     height: 480
     public: 1
   -
     label: thumbnails_360
-    interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    format: jpg
     start_at_first_frame: 1
+    # interval: 1 # one thumbnail each second, limit: 100 thumbnails
+    number: 5 # A number of thumbnails to capture grabeb evenly-spaced across the whole duration.
     base_url: s3://dev.sublimevideo.videos/<%= token %>/thumbnails/360
     height: 360
     public: 1
